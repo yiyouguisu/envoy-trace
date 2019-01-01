@@ -31,6 +31,7 @@ def hello(service_number):
 
 @app.route('/trace/<service_number>')
 def trace(service_number):
+    app.logger.info(request.headers)
     headers = {}
     # call service 2 from service 1
     if int(os.environ['SERVICE_NAME']) == 1 :

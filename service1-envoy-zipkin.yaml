@@ -37,7 +37,7 @@ static_resources:
       - name: envoy.http_connection_manager
         config:
           tracing:
-            operation_name: egress
+            operation_name: ingress
           codec_type: auto
           stat_prefix: egress_http
           route_config:
@@ -74,6 +74,20 @@ static_resources:
     - socket_address:
         address: service2
         port_value: 80
+#   - name: zipkin
+#     connect_timeout: 1s
+#     type: strict_dns
+#     lb_policy: round_robin
+#     hosts:
+#     - socket_address:
+#         address: 127.0.0.1
+#         port_value: 9411
+# tracing:
+#   http:
+#     name: envoy.zipkin
+#     config:
+#       collector_cluster: zipkin
+#       collector_endpoint: "/api/v1/spans"
 tracing:
   http:
     name: envoy.local
