@@ -39,5 +39,15 @@ services:
       - SERVICE_NAME=2
     expose:
       - "80"
+  zipkin:
+    image: openzipkin/zipkin
+    networks:
+      envoymesh:
+        aliases:
+          - zipkin
+    expose:
+      - "9411"
+    ports:
+      - "9411:9411"
 networks:
   envoymesh: {}

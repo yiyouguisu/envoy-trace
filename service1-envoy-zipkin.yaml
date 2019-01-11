@@ -23,8 +23,6 @@ static_resources:
                   prefix: "/"
                 route:
                   cluster: local_service
-                decorator:
-                  operation: checkAvailability
           http_filters:
           - name: envoy.router
             config: {}
@@ -37,7 +35,7 @@ static_resources:
       - name: envoy.http_connection_manager
         config:
           tracing:
-            operation_name: ingress
+            operation_name: egress
           codec_type: auto
           stat_prefix: egress_http
           route_config:
@@ -51,8 +49,6 @@ static_resources:
                   prefix: "/trace/2"
                 route:
                   cluster: service2
-                decorator:
-                  operation: checkStock
           http_filters:
           - name: envoy.router
             config: {}
@@ -74,28 +70,22 @@ static_resources:
     - socket_address:
         address: service2
         port_value: 80
-#   - name: zipkin
-#     connect_timeout: 1s
-#     type: strict_dns
-#     lb_policy: round_robin
-#     hosts:
-#     - socket_address:
-#         address: 127.0.0.1
-#         port_value: 9411
-# tracing:
-#   http:
-#     name: envoy.zipkin
-#     config:
-#       collector_cluster: zipkin
-#       collector_endpoint: "/api/v1/spans"
+  - name: zipkin
+    connect_timeout: 1s
+    type: strict_dns
+    lb_policy: round_robin
+    hosts:
+    - socket_address:
+        address: zipkin
+        port_value: 9411
 tracing:
   http:
-    name: envoy.local
+    name: envoy.zipkin
     config:
-      collector_cluster: local
-      collector_endpoint: /var/log/trace_log.log
+      collector_cluster: zipkin
+      collector_endpoint: "/api/v1/spans"
 admin:
-  access_log_path: "/var/log/envoy_log.log"
+  access_log_path: "/dev/null"
   address:
     socket_address:
       address: 0.0.0.0
