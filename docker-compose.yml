@@ -9,34 +9,58 @@ services:
       - envoymesh
     expose:
       - "80"
-      - "8001"
+      - "9901"
     ports:
       - "8000:80"
-      - "8001:8001"
+      - "9901:9901"
 
-  service1:
+  servicea:
     build:
       context: ./
-      dockerfile: Dockerfile-service1
+      dockerfile: Dockerfile-serviceA
     networks:
       envoymesh:
         aliases:
-          - service1
+          - servicea
     environment:
-      - SERVICE_NAME=1
+      - SERVICE_NAME=A
     expose:
       - "80"
 
-  service2:
+  serviceb:
     build:
       context: ./
-      dockerfile: Dockerfile-service2
+      dockerfile: Dockerfile-serviceB
     networks:
       envoymesh:
         aliases:
-          - service2
+          - serviceb
     environment:
-      - SERVICE_NAME=2
+      - SERVICE_NAME=B
+    expose:
+      - "80"
+  servicec:
+    build:
+      context: ./
+      dockerfile: Dockerfile-serviceC
+    networks:
+      envoymesh:
+        aliases:
+          - servicec
+    environment:
+      - SERVICE_NAME=C
+    expose:
+      - "80"
+  serviced:
+    build:
+      context: ./
+      dockerfile: Dockerfile-serviceD
+    networks:
+      envoymesh:
+        aliases:
+          - serviced
+    environment:
+      - SERVICE_NAME=D
     expose:
       - "80"
   zipkin:

@@ -1,6 +1,105 @@
 [
-{"traceId":"4be7e3c8e9a1f4a8","id":"4be7e3c8e9a1f4a8","kind":"CLIENT","duration":48356,"timestamp":1547193920822158,"localEndpoint":{"ipv4":"10.0.10.113","serviceName":"nxgw-cluster","port":0},"tags":{"component":"proxy","node_id":"10.0.10.113","guid:x-request-id":"a5c3e19e-7ef0-90b9-8863-9c82d5c3d385","http.url":"http://ServiceA:5000/api/v6/data/nxmc/a1/test/post","http.method":"POST","downstream_cluster":"-","user_agent":"PostmanRuntime/7.6.0","http.protocol":"HTTP/1.1","request_size":"44","upstream_cluster":"ServiceA-ServiceA-dev-1.0-cluster-out","http.status_code":"200","response_size":"59","response_flags":"-"},"name":"/api/v6/data/nxmc/a1/test/post"},
-{"traceId":"4be7e3c8e9a1f4a8","id":"edf94d8e10a56525","parentId":"4be7e3c8e9a1f4a8","kind":"CLIENT","duration":15022,"timestamp":1547193920849571,"localEndpoint":{"ipv4":"10.0.10.27","serviceName":"ServiceA-cluster","port":0},"tags":{"component":"proxy","node_id":"10.0.10.27","guid:x-request-id":"a5c3e19e-7ef0-90b9-8863-9c82d5c3d385","http.url":"http://serviceb:5000/api/v6/data/nxmc/b2/test/post","http.method":"POST","downstream_cluster":"-","user_agent":"python-requests/2.19.1","http.protocol":"HTTP/1.1","request_size":"50","upstream_cluster":"ServiceB-ServiceB-dev-1.0-cluster-out","http.status_code":"200","response_size":"140","response_flags":"-"},"name":"/api/v6/data/nxmc/b2/test/post"},
-{"traceId":"4be7e3c8e9a1f4a8","id":"4be7e3c8e9a1f4a8","kind":"SERVER","duration":39494,"timestamp":1547193920827441,"localEndpoint":{"ipv4":"10.0.10.27","serviceName":"ServiceA-cluster","port":0},"tags":{"component":"proxy","node_id":"10.0.10.27","guid:x-request-id":"a5c3e19e-7ef0-90b9-8863-9c82d5c3d385","http.url":"http://ServiceA:5000/api/v6/data/nxmc/a1/test/post","http.method":"POST","downstream_cluster":"-","user_agent":"PostmanRuntime/7.6.0","http.protocol":"HTTP/1.1","request_size":"44","upstream_cluster":"ServiceA-cluster-in","http.status_code":"200","response_size":"59","response_flags":"-"},"name":"/api/v6/data/nxmc/a1/test/post"},
-{"traceId":"4be7e3c8e9a1f4a8","id":"edf94d8e10a56525","parentId":"4be7e3c8e9a1f4a8","kind":"SERVER","duration":12850,"timestamp":1547193920847987,"localEndpoint":{"ipv4":"10.0.10.64","serviceName":"ServiceB-cluster","port":0},"tags":{"component":"proxy","node_id":"10.0.10.64","guid:x-request-id":"a5c3e19e-7ef0-90b9-8863-9c82d5c3d385","http.url":"http://serviceb:5000/api/v6/data/nxmc/b2/test/post","http.method":"POST","downstream_cluster":"-","user_agent":"python-requests/2.19.1","http.protocol":"HTTP/1.1","request_size":"50","upstream_cluster":"ServiceB-cluster-in","http.status_code":"200","response_size":"140","response_flags":"-"},"name":"/api/v6/data/nxmc/b2/test/post"}
+    {
+        "traceId": "ebb78c0613c4a030",
+        "id": "ebb78c0613c4a030",
+        "kind": "CLIENT",
+        "name": "172.16.186.135:8000",
+        "timestamp": 1551928494617815,
+        "duration": 81938,
+        "localEndpoint": {
+            "serviceName": "nxgw",
+            "ipv4": "172.18.0.4"
+        }
+    },
+    {
+        "traceId": "ebb78c0613c4a030",
+        "id": "ebb78c0613c4a030",
+        "kind": "SERVER",
+        "name": "172.16.186.135:8000",
+        "timestamp": 1551928494618932,
+        "duration": 81651,
+        "localEndpoint": {
+            "serviceName": "servicea",
+            "ipv4": "172.18.0.3"
+        }
+    },
+    {
+        "traceId": "ebb78c0613c4a030",
+        "parentId": "ebb78c0613c4a030",
+        "id": "1d4c17ceadf90a68",
+        "kind": "CLIENT",
+        "name": "localhost:9000",
+        "timestamp": 1551928494686136,
+        "duration": 5343,
+        "localEndpoint": {
+            "serviceName": "servicea",
+            "ipv4": "172.18.0.3"
+        }
+    },
+    {
+        "traceId": "ebb78c0613c4a030",
+        "parentId": "ebb78c0613c4a030",
+        "id": "1d4c17ceadf90a68",
+        "kind": "SERVER",
+        "name": "localhost:9000",
+        "timestamp": 1551928494686600,
+        "duration": 4401,
+        "localEndpoint": {
+            "serviceName": "servicec",
+            "ipv4": "172.18.0.2"
+        }
+    },
+    {
+        "traceId": "ebb78c0613c4a030",
+        "parentId": "ebb78c0613c4a030",
+        "id": "2a447b8571a85fc5",
+        "kind": "CLIENT",
+        "name": "localhost:9000",
+        "timestamp": 1551928494636009,
+        "duration": 39299,
+        "localEndpoint": {
+            "serviceName": "servicea",
+            "ipv4": "172.18.0.3"
+        }
+    },
+    {
+        "traceId": "ebb78c0613c4a030",
+        "parentId": "ebb78c0613c4a030",
+        "id": "2a447b8571a85fc5",
+        "kind": "SERVER",
+        "name": "localhost:9000",
+        "timestamp": 1551928494636638,
+        "duration": 47625,
+        "localEndpoint": {
+            "serviceName": "serviceb",
+            "ipv4": "172.18.0.6"
+        }
+    },
+    {
+        "traceId": "ebb78c0613c4a030",
+        "parentId": "2a447b8571a85fc5",
+        "id": "d16e25bb626ed468",
+        "kind": "CLIENT",
+        "name": "localhost:9000",
+        "timestamp": 1551928494656550,
+        "duration": 10732,
+        "localEndpoint": {
+            "serviceName": "serviceb",
+            "ipv4": "172.18.0.6"
+        }
+    },
+    {
+        "traceId": "ebb78c0613c4a030",
+        "parentId": "2a447b8571a85fc5",
+        "id": "d16e25bb626ed468",
+        "kind": "SERVER",
+        "name": "localhost:9000",
+        "timestamp": 1551928494657207,
+        "duration": 13988,
+        "localEndpoint": {
+            "serviceName": "serviced",
+            "ipv4": "172.18.0.7"
+        }
+    }
+    
 ]

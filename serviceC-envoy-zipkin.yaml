@@ -8,35 +8,33 @@ static_resources:
     - filters:
       - name: envoy.http_connection_manager
         config:
-          generate_request_id: true
           tracing:
-            operation_name: egress
+            operation_name: ingress
           codec_type: auto
           stat_prefix: ingress_http
           route_config:
             name: local_route
             virtual_hosts:
-            - name: backend
+            - name: serviceC
               domains:
               - "*"
               routes:
               - match:
                   prefix: "/"
                 route:
-                  cluster: service1
+                  cluster: local_service
           http_filters:
           - name: envoy.router
             config: {}
   clusters:
-  - name: service1
+  - name: local_service
     connect_timeout: 0.250s
     type: strict_dns
     lb_policy: round_robin
-    http2_protocol_options: {}
     hosts:
     - socket_address:
-        address: service1
-        port_value: 80
+        address: 127.0.0.1
+        port_value: 8080
   - name: zipkin
     connect_timeout: 1s
     type: strict_dns
@@ -56,4 +54,4 @@ admin:
   address:
     socket_address:
       address: 0.0.0.0
-      port_value: 8001
+      port_value: 9901

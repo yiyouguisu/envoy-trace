@@ -8,11 +8,10 @@ ADD ./service.py /code
 ADD ./start_service.sh /usr/local/bin/start_service.sh
 RUN chmod u+x /usr/local/bin/start_service.sh
 
-ADD ./service2-envoy-zipkin.yaml /etc/
-RUN mv /etc/service2-envoy-zipkin.yaml /etc/service-envoy.yaml
+ADD ./serviceD-envoy-zipkin.yaml /etc/
+RUN mv /etc/serviceD-envoy-zipkin.yaml /etc/service-envoy.yaml
 
 ADD ./envoy /usr/local/bin/
 RUN chmod u+x /usr/local/bin/envoy
 
 ENTRYPOINT /usr/local/bin/start_service.sh
-

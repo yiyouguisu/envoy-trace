@@ -34,11 +34,17 @@ def trace(service_number):
     app.logger.info(request.headers)
     headers = {}
     # call service 2 from service 1
-    if int(os.environ['SERVICE_NAME']) == 1 :
+    if str(os.environ['SERVICE_NAME']) == 'A' :
         for header in TRACE_HEADERS_TO_PROPAGATE:
             if header in request.headers:
                 headers[header] = request.headers[header]
         ret = requests.get("http://localhost:9000/trace/2", headers=headers)
+        ret = requests.get("http://localhost:9000/trace/3", headers=headers)
+    if str(os.environ['SERVICE_NAME']) == 'B' :
+        for header in TRACE_HEADERS_TO_PROPAGATE:
+            if header in request.headers:
+                headers[header] = request.headers[header]
+        ret = requests.get("http://localhost:9000/service/3", headers=headers)
     return ('Hello from behind Envoy (service {})! hostname: {} resolved'
             'hostname: {}\n'.format(os.environ['SERVICE_NAME'], 
                                     socket.gethostname(),

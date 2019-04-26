@@ -5,7 +5,7 @@ RUN apk upgrade && apk add curl
 ADD ./envoy /
 RUN chmod u+x /envoy
 
-ADD ./front-envoy-zipkin.yaml /etc/
+ADD ./nxgw-envoy-zipkin.yaml /etc/
 
 
-CMD /envoy --v2-config-only -l info -c /etc/front-envoy-zipkin.yaml --service-cluster front-proxy
+CMD /envoy --v2-config-only -l info -c /etc/nxgw-envoy-zipkin.yaml --enable-mutex-tracing --service-cluster nxgw
