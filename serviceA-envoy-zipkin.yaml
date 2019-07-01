@@ -92,11 +92,16 @@ static_resources:
         address: zipkin
         port_value: 9411
 tracing:
+  # http:
+  #   name: envoy.zipkin
+  #   config:
+  #     collector_cluster: zipkin
+  #     collector_endpoint: "/api/v1/spans"
   http:
-    name: envoy.zipkin
+    name: envoy.local
     config:
-      collector_cluster: zipkin
-      collector_endpoint: "/api/v1/spans"
+      collector_cluster: local
+      collector_endpoint: trace.log
 admin:
   access_log_path: "/dev/null"
   address:
